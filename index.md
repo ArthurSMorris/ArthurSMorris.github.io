@@ -1,4 +1,3 @@
-<html>
 <head>
 	<title>pidge.it</title>
 
@@ -79,4 +78,3 @@
 
 
 </body>
-</html>
