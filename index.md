@@ -1,4 +1,3 @@
-</!DOCTYPE html>
 <html>
 <head>
 	<title>pidge.it</title>
@@ -60,7 +59,7 @@
 <body>
 <div class = 'strip'>
 	<div class = 'logo'>
-		<img src="pigeon2.png" alt="pigeon">
+		<img src="/pigeon2.png" alt="pigeon">
 		<br><br>
 		pidge.it
 	</div>
