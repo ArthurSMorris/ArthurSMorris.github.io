@@ -1,0 +1,98 @@
+[
+  {
+    "name": "brillouin-torus",
+    "title": "Brillouin torus",
+    "description": "A parametric torus with its two independent cycles highlighted; a geometric model of a two-dimensional Brillouin zone.",
+    "file": "brillouin-torus.svg"
+  },
+  {
+    "name": "mobius-band",
+    "title": "Möbius band",
+    "description": "A ruled strip with a half twist. Its two parameter edges join into one continuous boundary.",
+    "file": "mobius-band.svg"
+  },
+  {
+    "name": "hopf-fibres",
+    "title": "Linked Hopf fibres",
+    "description": "Eight fibres of the Hopf map stereographically projected from the three-sphere. Each pair is linked once; gaps preserve their projected over-under ordering.",
+    "file": "hopf-fibres.svg"
+  },
+  {
+    "name": "trefoil-knot",
+    "title": "Trefoil knot",
+    "description": "A smooth tubular embedding of the (2,3) torus knot, with depth-sorted faces making its three crossings legible.",
+    "file": "trefoil-knot.svg"
+  },
+  {
+    "name": "bloch-sphere",
+    "title": "Bloch sphere",
+    "description": "A unit sphere, coordinate axes, computational-basis poles and a normalized pure-qubit state vector. Back-facing curves are attenuated.",
+    "file": "bloch-sphere.svg"
+  },
+  {
+    "name": "dirac-cone",
+    "title": "Conical band crossing",
+    "description": "Two energy sheets proportional to plus or minus the magnitude of momentum, shown as touching wireframe cones. An illustrative two-band dispersion, not measured data.",
+    "file": "dirac-cone.svg"
+  },
+  {
+    "name": "euler-winding",
+    "title": "Euler winding",
+    "description": "The planar vector (cos 2θ, sin 2θ) turns twice around one circuit of the origin. A schematic texture relevant to Euler band crossings.",
+    "file": "euler-winding.svg"
+  },
+  {
+    "name": "node-braid",
+    "title": "Band-node braid",
+    "description": "Three smooth node trajectories with three exchanges and explicit crossing order, illustrating multiband node braiding.",
+    "file": "node-braid.svg"
+  },
+  {
+    "name": "surface-code",
+    "title": "Surface-code stabilizers",
+    "description": "A square-lattice bulk schematic with data qubits on edges, one four-qubit Z plaquette and one four-qubit X star. No finite-code boundary conditions are asserted.",
+    "file": "surface-code.svg"
+  },
+  {
+    "name": "toric-code",
+    "title": "Toric-code lattice",
+    "description": "A square cellulation of a torus with data qubits at edge midpoints and two noncontractible cycles highlighted. The qubit placement and periodic identifications form a toric-code lattice.",
+    "file": "toric-code.svg"
+  },
+  {
+    "name": "fano-plane",
+    "title": "Fano plane",
+    "description": "The seven points and seven three-point lines of PG(2,2). Nonzero binary vectors label points; every line has vector sum zero. Related to the Hamming and Steane code constructions.",
+    "file": "fano-plane.svg"
+  },
+  {
+    "name": "quantum-circuit",
+    "title": "GHZ preparation circuit",
+    "description": "A Hadamard on the first of four zero-state qubits and a chain of three CNOT gates prepare (0000 plus 1111) divided by the square root of two.",
+    "file": "quantum-circuit.svg"
+  },
+  {
+    "name": "syndrome-circuit",
+    "title": "Stabilizer measurement",
+    "description": "Four data-controlled CNOTs accumulate their computational-basis parity in a zero-state ancilla; measuring the ancilla in Z measures the four-body Z stabilizer.",
+    "file": "syndrome-circuit.svg"
+  },
+  {
+    "name": "kagome-lattice",
+    "title": "Kagome lattice",
+    "description": "A nearest-neighbour graph of corner-sharing triangles, a standard frustrated-spin geometry, with one six-site loop highlighted.",
+    "file": "kagome-lattice.svg"
+  },
+  {
+    "name": "band-contours",
+    "title": "Band-energy contours",
+    "description": "Computed energy contours of the two-band toy Hamiltonian d dot sigma, with d = (sin kx, sin ky, 1.2 + cos kx + cos ky). Periodic momentum space is shown in oblique projection. Not measured data.",
+    "file": "band-contours.svg"
+  },
+  {
+    "name": "temporal-network",
+    "title": "Temporal network",
+    "description": "Three schematic snapshots of the same eight-node network, with changing edges and dotted inter-layer correspondences. No empirical network is implied.",
+    "file": "temporal-network.svg"
+  }
+]

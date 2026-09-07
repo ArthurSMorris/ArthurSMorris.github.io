@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Scientific explanations of the mathematical graphics on Arthur Morris’s academic website." name="description"/>
+<title>Arthur Morris — Graphics</title>
+<link href="styles.css" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer="" src="script.js"></script>
+</head>
+<body class="graphics-page" data-math-backgrounds="off">
+<a class="skip-link" href="#content">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a aria-label="Arthur Morris — home" class="identity" href="index.html">
+<span class="identity-name">Arthur Morris</span>
+
+</a>
+<div class="header-right">
+<nav aria-label="Primary navigation" class="site-nav"><a href="index.html">About me</a><a href="research.html">Research</a><a href="teaching.html">Teaching</a><a href="cv.html">CV</a><a href="miscellanea.html">Miscellanea</a><a href="contact.html">Contact</a></nav>
+
+</div>
+</div>
+</header>
+
+<main class="page" id="content">
+<div class="page-inner">
+<h1>Graphics</h1>
+<p class="lede">A guide to the geometry, topology, quantum information and network science illustrated in the site’s background graphics.</p>
+<p>Each image is a schematic mathematical construction. Select “View SVG” to inspect a diagram at full size.</p>
+<ol class="graphics-list" role="list">
+<li id="brillouin-torus">
+<article class="graphic-entry" aria-labelledby="heading-brillouin-torus">
+<figure class="graphic-figure">
+<img alt="A wireframe torus with a meridian and a longitude highlighted in different colours." src="assets/backgrounds/brillouin-torus.svg" width="640" height="640" decoding="async" loading="eager"/>
+<figcaption><a href="assets/backgrounds/brillouin-torus.svg" aria-label="View Brillouin torus as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-brillouin-torus">Brillouin torus</h2>
+<p>Crystal momentum repeats under shifts by reciprocal-lattice vectors. In two dimensions, identifying opposite edges of a fundamental momentum-space cell gives a torus, \(T^2=S^1\times S^1\). The highlighted loops wind around its two independent directions.</p>
+<p>The curved surface is a geometric picture of this periodicity. Band eigenstates vary over the momentum-space torus, and their global structure is central to band topology.</p>
+</div>
+</article>
+</li>
+<li id="mobius-band">
+<article class="graphic-entry" aria-labelledby="heading-mobius-band">
+<figure class="graphic-figure">
+<img alt="A gridded strip with a half twist and one continuous highlighted boundary." src="assets/backgrounds/mobius-band.svg" width="640" height="640" decoding="async" loading="eager"/>
+<figcaption><a href="assets/backgrounds/mobius-band.svg" aria-label="View Möbius band as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-mobius-band">Möbius band</h2>
+<p>Joining the ends of a strip after a half twist produces a surface with one boundary component that is non-orientable. Carrying a local normal vector once around its central loop reverses the vector’s direction; a second circuit restores it.</p>
+<p>The band gives a concrete picture of a nontrivial real line bundle: local choices of orientation can be consistent in small patches but fail to extend globally. Related obstructions arise when choosing real eigenvectors in band theory.</p>
+</div>
+</article>
+</li>
+<li id="hopf-fibres">
+<article class="graphic-entry" aria-labelledby="heading-hopf-fibres">
+<figure class="graphic-figure">
+<img alt="Eight linked circles, with small gaps indicating which arc passes behind at each crossing." src="assets/backgrounds/hopf-fibres.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/hopf-fibres.svg" aria-label="View Linked Hopf fibres as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-hopf-fibres">Linked Hopf fibres</h2>
+<p>In the Hopf fibration \(S^3\to S^2\), the preimage of each point on the two-sphere is a circle. These eight fibres are drawn in ordinary three-dimensional space using stereographic projection; any two distinct fibres link once.</p>
+<p>Linking numbers of preimages give a geometric way to understand Hopf invariants. Related linked structures occur in Hopf and Hopf–Euler band phases.</p>
+<p class="graphic-source">Further reading: <a href="https://arxiv.org/abs/2405.17305" rel="noopener" target="_blank">Non-Abelian Hopf–Euler insulators</a></p>
+</div>
+</article>
+</li>
+<li id="trefoil-knot">
+<article class="graphic-entry" aria-labelledby="heading-trefoil-knot">
+<figure class="graphic-figure">
+<img alt="A smooth closed tube forming a trefoil, with three visible over-under crossings." src="assets/backgrounds/trefoil-knot.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/trefoil-knot.svg" aria-label="View Trefoil knot as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-trefoil-knot">Trefoil knot</h2>
+<p>This is a trefoil, the simplest nontrivial knot. Its minimum crossing number is three, and it cannot be deformed into an unknotted circle without cutting the strand or passing it through itself.</p>
+<p>Also called the \((2,3)\) torus knot, it can be embedded on a torus. Knot type records a global property of a closed curve that survives smooth deformations, illustrating the distinction between local geometry and global topology.</p>
+</div>
+</article>
+</li>
+<li id="bloch-sphere">
+<article class="graphic-entry" aria-labelledby="heading-bloch-sphere">
+<figure class="graphic-figure">
+<img alt="A sphere with computational-basis poles, coordinate axes and an arrow marking a pure qubit state." src="assets/backgrounds/bloch-sphere.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/bloch-sphere.svg" aria-label="View Bloch sphere as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-bloch-sphere">Bloch sphere</h2>
+<p>Ignoring an overall phase, a pure qubit state can be written as</p>
+<p>\[|\psi\rangle=\cos\frac{\theta}{2}|0\rangle+e^{i\phi}\sin\frac{\theta}{2}|1\rangle.\]</p>
+<p>The two angles specify a point on the sphere. The poles are the computational-basis states, and the arrow marks one particular pure state. Mixed qubit states occupy the interior; single-qubit unitary gates act as rotations of the sphere.</p>
+<p class="graphic-source">Further reading: <a href="https://quantum.cloud.ibm.com/learning/en/courses/utility-scale-quantum-computing/bits-gates-and-circuits" rel="noopener" target="_blank">IBM Quantum: bits, gates and circuits</a></p>
+</div>
+</article>
+</li>
+<li id="dirac-cone">
+<article class="graphic-entry" aria-labelledby="heading-dirac-cone">
+<figure class="graphic-figure">
+<img alt="Two wireframe energy cones touching at a single point, with momentum-plane guides." src="assets/backgrounds/dirac-cone.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/dirac-cone.svg" aria-label="View Conical band crossing as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-dirac-cone">Conical band crossing</h2>
+<p>The simple two-band Hamiltonian \(H=\hbar v(k_x\sigma_x+k_y\sigma_y)\), where \(\sigma_x\) and \(\sigma_y\) are Pauli matrices, has energies</p>
+<p>\[E_\pm=\pm\hbar v\sqrt{k_x^2+k_y^2}.\]</p>
+<p>The two sheets meet at a Dirac point and disperse linearly nearby. The band gap vanishes at the apex. Such local crossings are basic building blocks for models of topological band structures.</p>
+</div>
+</article>
+</li>
+<li id="euler-winding">
+<article class="graphic-entry" aria-labelledby="heading-euler-winding">
+<figure class="graphic-figure">
+<img alt="A planar arrow field whose direction winds twice along a loop around the central singularity." src="assets/backgrounds/euler-winding.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/euler-winding.svg" aria-label="View Winding-two texture as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-euler-winding">Winding-two texture</h2>
+<p>The arrows show \(\mathbf n(\theta)=(\cos 2\theta,\sin 2\theta)\). A circuit around the origin turns the arrow direction twice, giving winding number \(\nu=2\). At the centre the direction has no well-defined limit.</p>
+<p>Winding textures help visualize band nodes in real multiband systems. The Euler class characterizes an entire oriented two-band bundle; this local texture illustrates one ingredient in that topology.</p>
+<p class="graphic-source">Further reading: <a href="https://arxiv.org/abs/2505.09683" rel="noopener" target="_blank">Euler topology in classical spin liquids</a></p>
+</div>
+</article>
+</li>
+<li id="node-braid">
+<article class="graphic-entry" aria-labelledby="heading-node-braid">
+<figure class="graphic-figure">
+<img alt="Three continuous node trajectories undergoing successive exchanges, with their crossing order marked." src="assets/backgrounds/node-braid.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/node-braid.svg" aria-label="View Band-node braid as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-node-braid">Band-node braid</h2>
+<p>Each strand follows a node as a parameter is varied. Exchanging nodes creates a braid that remembers the order of the exchanges.</p>
+<p>In real multiband models, nodes in different gaps can carry noncommuting topological charges. Braiding can change which pairs of nodes can annihilate. This schematic illustrates three continuous trajectories and their exchange order, without assigning a particular Hamiltonian or charge to each strand.</p>
+<p class="graphic-source">Further reading: <a href="https://arxiv.org/abs/2405.17305" rel="noopener" target="_blank">Non-Abelian Hopf–Euler insulators</a></p>
+</div>
+</article>
+</li>
+<li id="surface-code">
+<article class="graphic-entry" aria-labelledby="heading-surface-code">
+<figure class="graphic-figure">
+<img alt="Qubits on square-lattice edges, with one four-qubit Z plaquette and one four-qubit X star highlighted." src="assets/backgrounds/surface-code.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/surface-code.svg" aria-label="View Surface-code stabilizers as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-surface-code">Surface-code stabilizers</h2>
+<p>Qubits sit on the lattice edges. A star applies Pauli \(X\) to four qubits meeting at a vertex; a plaquette applies \(Z\) around one face. These checks commute because an X star and a Z plaquette overlap on zero or two qubits.</p>
+<p>Their outcomes reveal error patterns. This drawing shows bulk checks; boundary choices specify a finite planar code.</p>
+<p class="graphic-source">Further reading: <a href="https://arxiv.org/abs/quant-ph/0110143" rel="noopener" target="_blank">Topological quantum memory</a></p>
+</div>
+</article>
+</li>
+<li id="toric-code">
+<article class="graphic-entry" aria-labelledby="heading-toric-code">
+<figure class="graphic-figure">
+<img alt="An edge-qubit lattice wrapped around a torus, with two independent winding cycles highlighted." src="assets/backgrounds/toric-code.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/toric-code.svg" aria-label="View Toric-code lattice as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-toric-code">Toric-code lattice</h2>
+<p>The lattice is periodic in both directions, with qubits on its edges. The highlighted loops wind around independent cycles of the torus.</p>
+<p>Products of Pauli operators along noncontractible cycles can act as logical operators while commuting with local checks. This global topology underlies the toric code; the standard code on a torus encodes two logical qubits.</p>
+<p class="graphic-source">Further reading: <a href="https://arxiv.org/abs/quant-ph/0110143" rel="noopener" target="_blank">Topological quantum memory</a></p>
+</div>
+</article>
+</li>
+<li id="fano-plane">
+<article class="graphic-entry" aria-labelledby="heading-fano-plane">
+<figure class="graphic-figure">
+<img alt="Seven binary-labelled points joined by the seven three-point lines of the Fano plane, one drawn as a circle." src="assets/backgrounds/fano-plane.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/fano-plane.svg" aria-label="View Fano plane as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-fano-plane">Fano plane</h2>
+<p>Seven points and seven lines form the smallest finite projective plane, \(\mathrm{PG}(2,2)\). Each line contains three points, and any two points determine a line. The circle counts as a line in this incidence geometry.</p>
+<p>The labels are the nonzero vectors of \(\mathbb F_2^3\); the three labels on each line sum to zero. These vectors also form the columns of the Hamming-code parity-check matrix, connecting the picture to classical error correction and the seven-qubit Steane code.</p>
+<p class="graphic-source">Further reading: <a href="https://quantum.cloud.ibm.com/learning/en/courses/foundations-of-quantum-error-correction/stabilizer-formalism/stabilizer-codes" rel="noopener" target="_blank">IBM Quantum: the Steane code</a></p>
+</div>
+</article>
+</li>
+<li id="quantum-circuit">
+<article class="graphic-entry" aria-labelledby="heading-quantum-circuit">
+<figure class="graphic-figure">
+<img alt="Four zero-state input qubits, a Hadamard gate on the first wire, and a chain of three CNOT gates." src="assets/backgrounds/quantum-circuit.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/quantum-circuit.svg" aria-label="View GHZ preparation circuit as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-quantum-circuit">GHZ preparation circuit</h2>
+<p>Starting from \(|0000\rangle\), the Hadamard creates a superposition on the first qubit. The three controlled-NOT gates then generate the entangled state</p>
+<p>\[|\mathrm{GHZ}_4\rangle=\frac{|0000\rangle+|1111\rangle}{\sqrt 2}.\]</p>
+<p>Computational-basis measurements return all zeros or all ones. The coherence between these two components is what distinguishes this quantum state from a classical mixture of the same outcomes.</p>
+<p class="graphic-source">Further reading: <a href="https://quantum.cloud.ibm.com/learning/en/courses/utility-scale-quantum-computing/bits-gates-and-circuits" rel="noopener" target="_blank">IBM Quantum: GHZ states</a></p>
+</div>
+</article>
+</li>
+<li id="syndrome-circuit">
+<article class="graphic-entry" aria-labelledby="heading-syndrome-circuit">
+<figure class="graphic-figure">
+<img alt="Four data-controlled CNOTs sharing a zero-state ancilla, followed by a measurement of that ancilla." src="assets/backgrounds/syndrome-circuit.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/syndrome-circuit.svg" aria-label="View Stabilizer measurement as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-syndrome-circuit">Stabilizer measurement</h2>
+<p>Four CNOT gates couple the data to an ancilla initialized in \(|0\rangle\). Measuring the ancilla yields the parity \(Z_1Z_2Z_3Z_4\): even parity gives 0 and odd parity gives 1.</p>
+<p>This extracts a collective stabilizer outcome without measuring the individual data bits, supplying information for an error-correction syndrome.</p>
+<p class="graphic-source">Further reading: <a href="https://arxiv.org/abs/quant-ph/0110143" rel="noopener" target="_blank">Topological quantum memory</a></p>
+</div>
+</article>
+</li>
+<li id="kagome-lattice">
+<article class="graphic-entry" aria-labelledby="heading-kagome-lattice">
+<figure class="graphic-figure">
+<img alt="A network of corner-sharing triangles with a six-site hexagonal loop highlighted." src="assets/backgrounds/kagome-lattice.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/kagome-lattice.svg" aria-label="View Kagome lattice as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-kagome-lattice">Kagome lattice</h2>
+<p>Corner-sharing triangles form the kagome lattice, with a hexagonal loop highlighted here. For antiferromagnetic Ising spins, each bond favours opposite orientations, but all three bonds of a triangle cannot be satisfied simultaneously.</p>
+<p>This geometric frustration makes kagome systems important models for unusual magnetism and spin-liquid behaviour. The drawing specifies the connectivity; a spin model additionally requires degrees of freedom and interactions.</p>
+</div>
+</article>
+</li>
+<li id="band-contours">
+<article class="graphic-entry" aria-labelledby="heading-band-contours">
+<figure class="graphic-figure">
+<img alt="Constant-energy curves in a periodic momentum-space square shown in oblique projection." src="assets/backgrounds/band-contours.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/band-contours.svg" aria-label="View Band-energy contours as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-band-contours">Band-energy contours</h2>
+<p>Each curve joins momenta with the same energy. The illustration uses a two-band model \(H(\mathbf k)=\mathbf d(\mathbf k)\cdot\boldsymbol\sigma\), with \(d_x=\sin k_x\), \(d_y=\sin k_y\) and \(d_z=1.2+\cos k_x+\cos k_y\). Its energies are \(E_\pm=\pm|\mathbf d|\).</p>
+<p>The contours reveal the shape of the dispersion, whose gradients determine group velocities. Band topology also depends on eigenvectors, so the energy contours provide only part of the description.</p>
+</div>
+</article>
+</li>
+<li id="temporal-network">
+<article class="graphic-entry" aria-labelledby="heading-temporal-network">
+<figure class="graphic-figure">
+<img alt="Three snapshots of the same eight-node network, with changing edges and dotted links between corresponding nodes." src="assets/backgrounds/temporal-network.svg" width="640" height="640" decoding="async" loading="lazy"/>
+<figcaption><a href="assets/backgrounds/temporal-network.svg" aria-label="View Temporal network as SVG">View SVG</a></figcaption>
+</figure>
+<div class="graphic-copy">
+<h2 id="heading-temporal-network">Temporal network</h2>
+<p>The layers are snapshots at successive times. Nodes retain their identities while edges change; dotted lines connect selected copies of the same node across time.</p>
+<p>Comparing snapshots can reveal recurring patterns or changes in system state. This motivates partially temporal network analysis in Phasik, where available time-dependent information is combined with network structure to study how interactions evolve.</p>
+<p class="graphic-source">Further reading: <a href="https://joss.theoj.org/papers/10.21105/joss.05872" rel="noopener" target="_blank">Phasik: identifying states in temporal networks</a></p>
+</div>
+</article>
+</li>
+</ol>
+<footer class="site-footer">
+<span>© <span data-current-year=""></span> Arthur Morris.</span>
+<nav aria-label="Footer" class="footer-links">
+<a aria-current="page" href="graphics.html">Graphics</a>
+<a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener" target="_blank">CC BY-SA 4.0</a>
+<a href="disclosure.html">Disclosure</a>
+</nav>
+<span class="last-updated">Last updated <time datetime="2026-09-07">7 September 2026</time>.</span>
+</footer>
+</div>
+</main>
+</body>
+</html>

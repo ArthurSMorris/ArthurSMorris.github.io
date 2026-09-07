@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-labelledby="title description">
+<title id="title">Fano plane</title>
+<desc id="description">The seven points and seven three-point lines of PG(2,2). Nonzero binary vectors label points; every line has vector sum zero. Related to the Hamming and Steane code constructions.</desc>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Cambria Math, Georgia, serif">
+<path d="M320,94 L111,456 L529,456 Z" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<circle cx="320" cy="335.33" r="120.67" stroke="#87c8d6" stroke-width="2.3" fill="#223344" opacity="1"/>
+<path d="M320,94 L320,456" fill="none" stroke="#a8a5ff" stroke-width="1.35" opacity="1"/>
+<path d="M111,456 L424.5,275" fill="none" stroke="#a8a5ff" stroke-width="1.35" opacity="1"/>
+<path d="M529,456 L215.5,275" fill="none" stroke="#a8a5ff" stroke-width="1.35" opacity="1"/>
+<circle cx="320" cy="94" r="6.5" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<circle cx="320" cy="94" r="2.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="1"/>
+<text x="320" y="74" fill="#c6c3ff" font-size="18" text-anchor="middle">001</text>
+<circle cx="111" cy="456" r="6.5" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<circle cx="111" cy="456" r="2.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="1"/>
+<text x="84" y="479" fill="#c6c3ff" font-size="18" text-anchor="middle">010</text>
+<circle cx="529" cy="456" r="6.5" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<circle cx="529" cy="456" r="2.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="1"/>
+<text x="556" y="479" fill="#c6c3ff" font-size="18" text-anchor="middle">100</text>
+<circle cx="215.5" cy="275" r="6.5" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<circle cx="215.5" cy="275" r="2.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="1"/>
+<text x="180.5" y="267" fill="#87c8d6" font-size="18" text-anchor="middle">011</text>
+<circle cx="424.5" cy="275" r="6.5" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<circle cx="424.5" cy="275" r="2.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="1"/>
+<text x="459.5" y="267" fill="#87c8d6" font-size="18" text-anchor="middle">101</text>
+<circle cx="320" cy="456" r="6.5" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<circle cx="320" cy="456" r="2.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="1"/>
+<text x="320" y="489" fill="#87c8d6" font-size="18" text-anchor="middle">110</text>
+<circle cx="320" cy="335.33" r="6.5" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<circle cx="320" cy="335.33" r="2.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="1"/>
+<text x="345" y="320.33" fill="#c6c3ff" font-size="18" text-anchor="middle">111</text>
+</g>
+</svg>

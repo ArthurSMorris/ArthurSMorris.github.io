@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-labelledby="title description">
+<title id="title">GHZ preparation circuit</title>
+<desc id="description">A Hadamard on the first of four zero-state qubits and a chain of three CNOT gates prepare (0000 plus 1111) divided by the square root of two.</desc>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Cambria Math, Georgia, serif">
+<path d="M113,176 L549,176" fill="none" stroke="#7186a4" stroke-width="1.6" opacity="1"/>
+<text x="82" y="183" fill="#c6c3ff" font-size="25" text-anchor="middle">|0⟩</text>
+<path d="M113,270 L549,270" fill="none" stroke="#7186a4" stroke-width="1.6" opacity="1"/>
+<text x="82" y="277" fill="#c6c3ff" font-size="25" text-anchor="middle">|0⟩</text>
+<path d="M113,364 L549,364" fill="none" stroke="#7186a4" stroke-width="1.6" opacity="1"/>
+<text x="82" y="371" fill="#c6c3ff" font-size="25" text-anchor="middle">|0⟩</text>
+<path d="M113,458 L549,458" fill="none" stroke="#7186a4" stroke-width="1.6" opacity="1"/>
+<text x="82" y="465" fill="#c6c3ff" font-size="25" text-anchor="middle">|0⟩</text>
+<path d="M151,153 L197,153 L197,199 L151,199 Z" fill="#273249" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<text x="174" y="184" fill="#c6c3ff" font-size="26" text-anchor="middle">H</text>
+<path d="M277,176 L277,270" fill="none" stroke="#87c8d6" stroke-width="2" opacity="1"/>
+<circle cx="277" cy="176" r="5.6" stroke="#87c8d6" stroke-width="0" fill="#87c8d6" opacity="1"/>
+<circle cx="277" cy="270" r="15" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<path d="M268,270 L286,270" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<path d="M277,261 L277,279" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<path d="M380,270 L380,364" fill="none" stroke="#87c8d6" stroke-width="2" opacity="1"/>
+<circle cx="380" cy="270" r="5.6" stroke="#87c8d6" stroke-width="0" fill="#87c8d6" opacity="1"/>
+<circle cx="380" cy="364" r="15" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<path d="M371,364 L389,364" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<path d="M380,355 L380,373" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<path d="M483,364 L483,458" fill="none" stroke="#87c8d6" stroke-width="2" opacity="1"/>
+<circle cx="483" cy="364" r="5.6" stroke="#87c8d6" stroke-width="0" fill="#87c8d6" opacity="1"/>
+<circle cx="483" cy="458" r="15" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<path d="M474,458 L492,458" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<path d="M483,449 L483,467" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+</g>
+</svg>

@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-labelledby="title description">
+<title id="title">Surface-code stabilizers</title>
+<desc id="description">A square-lattice bulk schematic with data qubits on edges, one four-qubit Z plaquette and one four-qubit X star. No finite-code boundary conditions are asserted.</desc>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Cambria Math, Georgia, serif">
+<path d="M125,125 L125,515" fill="none" stroke="#7186a4" stroke-width="1" opacity="0.68"/>
+<path d="M125,125 L515,125" fill="none" stroke="#7186a4" stroke-width="1" opacity="0.68"/>
+<path d="M203,125 L203,515" fill="none" stroke="#7186a4" stroke-width="1" opacity="0.68"/>
+<path d="M125,203 L515,203" fill="none" stroke="#7186a4" stroke-width="1" opacity="0.68"/>
+<path d="M281,125 L281,515" fill="none" stroke="#7186a4" stroke-width="1" opacity="0.68"/>
+<path d="M125,281 L515,281" fill="none" stroke="#7186a4" stroke-width="1" opacity="0.68"/>
+<path d="M359,125 L359,515" fill="none" stroke="#7186a4" stroke-width="1" opacity="0.68"/>
+<path d="M125,359 L515,359" fill="none" stroke="#7186a4" stroke-width="1" opacity="0.68"/>
+<path d="M437,125 L437,515" fill="none" stroke="#7186a4" stroke-width="1" opacity="0.68"/>
+<path d="M125,437 L515,437" fill="none" stroke="#7186a4" stroke-width="1" opacity="0.68"/>
+<path d="M515,125 L515,515" fill="none" stroke="#7186a4" stroke-width="1" opacity="0.68"/>
+<path d="M125,515 L515,515" fill="none" stroke="#7186a4" stroke-width="1" opacity="0.68"/>
+<circle cx="164" cy="125" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="125" cy="164" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="164" cy="203" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="203" cy="164" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="164" cy="281" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="281" cy="164" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="164" cy="359" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="359" cy="164" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="164" cy="437" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="437" cy="164" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="164" cy="515" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="515" cy="164" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="242" cy="125" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="125" cy="242" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="242" cy="203" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="203" cy="242" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="242" cy="281" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="281" cy="242" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="242" cy="359" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="359" cy="242" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="242" cy="437" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="437" cy="242" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="242" cy="515" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="515" cy="242" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="320" cy="125" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="125" cy="320" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="320" cy="203" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="203" cy="320" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="320" cy="281" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="281" cy="320" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="320" cy="359" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="359" cy="320" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="320" cy="437" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="437" cy="320" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="320" cy="515" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="515" cy="320" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="398" cy="125" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="125" cy="398" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="398" cy="203" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="203" cy="398" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="398" cy="281" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="281" cy="398" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="398" cy="359" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="359" cy="398" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="398" cy="437" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="437" cy="398" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="398" cy="515" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="515" cy="398" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="476" cy="125" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="125" cy="476" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="476" cy="203" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="203" cy="476" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="476" cy="281" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="281" cy="476" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="476" cy="359" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="359" cy="476" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="476" cy="437" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="437" cy="476" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="476" cy="515" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<circle cx="515" cy="476" r="3.3" stroke="#c6c3ff" stroke-width="0" fill="#c6c3ff" opacity="0.8"/>
+<path d="M203,203 L281,203 L281,281 L203,281 Z" fill="#2d3552" stroke="#a8a5ff" stroke-width="2.3" opacity="1"/>
+<circle cx="242" cy="203" r="6.2" stroke="#c6c3ff" stroke-width="1.7" fill="#1b2432" opacity="1"/>
+<circle cx="281" cy="242" r="6.2" stroke="#c6c3ff" stroke-width="1.7" fill="#1b2432" opacity="1"/>
+<circle cx="242" cy="281" r="6.2" stroke="#c6c3ff" stroke-width="1.7" fill="#1b2432" opacity="1"/>
+<circle cx="203" cy="242" r="6.2" stroke="#c6c3ff" stroke-width="1.7" fill="#1b2432" opacity="1"/>
+<text x="242" y="251.36" fill="#c6c3ff" font-size="25" text-anchor="middle">Z</text>
+<path d="M437,359 L398,359" fill="none" stroke="#87c8d6" stroke-width="2.8" opacity="1"/>
+<circle cx="398" cy="359" r="6.2" stroke="#87c8d6" stroke-width="1.7" fill="#1b2432" opacity="1"/>
+<path d="M437,359 L476,359" fill="none" stroke="#87c8d6" stroke-width="2.8" opacity="1"/>
+<circle cx="476" cy="359" r="6.2" stroke="#87c8d6" stroke-width="1.7" fill="#1b2432" opacity="1"/>
+<path d="M437,359 L437,320" fill="none" stroke="#87c8d6" stroke-width="2.8" opacity="1"/>
+<circle cx="437" cy="320" r="6.2" stroke="#87c8d6" stroke-width="1.7" fill="#1b2432" opacity="1"/>
+<path d="M437,359 L437,398" fill="none" stroke="#87c8d6" stroke-width="2.8" opacity="1"/>
+<circle cx="437" cy="398" r="6.2" stroke="#87c8d6" stroke-width="1.7" fill="#1b2432" opacity="1"/>
+<circle cx="437" cy="359" r="15" stroke="#87c8d6" stroke-width="1.2" fill="#1b2432" opacity="1"/>
+<text x="437" y="366" fill="#87c8d6" font-size="21" text-anchor="middle">X</text>
+</g>
+</svg>

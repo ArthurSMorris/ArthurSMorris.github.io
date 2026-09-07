@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-labelledby="title description">
+<title id="title">Stabilizer measurement</title>
+<desc id="description">Four data-controlled CNOTs accumulate their computational-basis parity in a zero-state ancilla; measuring the ancilla in Z measures the four-body Z stabilizer.</desc>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Cambria Math, Georgia, serif">
+<path d="M105,132 L550,132" fill="none" stroke="#7186a4" stroke-width="1.5" opacity="1"/>
+<text x="81" y="138" fill="#c6c3ff" font-size="21" text-anchor="middle">q1</text>
+<path d="M105,211 L550,211" fill="none" stroke="#7186a4" stroke-width="1.5" opacity="1"/>
+<text x="81" y="217" fill="#c6c3ff" font-size="21" text-anchor="middle">q2</text>
+<path d="M105,290 L550,290" fill="none" stroke="#7186a4" stroke-width="1.5" opacity="1"/>
+<text x="81" y="296" fill="#c6c3ff" font-size="21" text-anchor="middle">q3</text>
+<path d="M105,369 L550,369" fill="none" stroke="#7186a4" stroke-width="1.5" opacity="1"/>
+<text x="81" y="375" fill="#c6c3ff" font-size="21" text-anchor="middle">q4</text>
+<path d="M105,478 L550,478" fill="none" stroke="#7186a4" stroke-width="1.5" opacity="1"/>
+<text x="81" y="484" fill="#c6c3ff" font-size="21" text-anchor="middle">|0⟩</text>
+<path d="M175,132 L175,478" fill="none" stroke="#87c8d6" stroke-width="2" opacity="1"/>
+<circle cx="175" cy="132" r="5.6" stroke="#87c8d6" stroke-width="0" fill="#87c8d6" opacity="1"/>
+<circle cx="175" cy="478" r="15" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<path d="M166,478 L184,478" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<path d="M175,469 L175,487" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<path d="M265,211 L265,478" fill="none" stroke="#87c8d6" stroke-width="2" opacity="1"/>
+<circle cx="265" cy="211" r="5.6" stroke="#87c8d6" stroke-width="0" fill="#87c8d6" opacity="1"/>
+<circle cx="265" cy="478" r="15" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<path d="M256,478 L274,478" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<path d="M265,469 L265,487" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<path d="M355,290 L355,478" fill="none" stroke="#87c8d6" stroke-width="2" opacity="1"/>
+<circle cx="355" cy="290" r="5.6" stroke="#87c8d6" stroke-width="0" fill="#87c8d6" opacity="1"/>
+<circle cx="355" cy="478" r="15" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<path d="M346,478 L364,478" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<path d="M355,469 L355,487" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<path d="M445,369 L445,478" fill="none" stroke="#87c8d6" stroke-width="2" opacity="1"/>
+<circle cx="445" cy="369" r="5.6" stroke="#87c8d6" stroke-width="0" fill="#87c8d6" opacity="1"/>
+<circle cx="445" cy="478" r="15" stroke="#c6c3ff" stroke-width="1.8" fill="#1b2432" opacity="1"/>
+<path d="M436,478 L454,478" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<path d="M445,469 L445,487" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
+<path d="M505,455 L551,455 L551,501 L505,501 Z" fill="#1b2432" stroke="#c6c3ff" stroke-width="1.7" opacity="1"/>
+<path d="M514,484 L514.02,483.25 L514.08,482.51 L514.18,481.77 L514.32,481.04 L514.49,480.32 L514.71,479.6 L514.96,478.9 L515.25,478.22 L515.58,477.54 L515.94,476.89 L516.33,476.26 L516.76,475.65 L517.22,475.06 L517.71,474.5 L518.23,473.97 L518.78,473.46 L519.35,472.99 L519.95,472.54 L520.57,472.13 L521.22,471.75 L521.88,471.41 L522.56,471.1 L523.25,470.83 L523.96,470.6 L524.68,470.4 L525.41,470.24 L526.14,470.12 L526.88,470.04 L527.63,470 L528.37,470 L529.12,470.04 L529.86,470.12 L530.59,470.24 L531.32,470.4 L532.04,470.6 L532.75,470.83 L533.44,471.1 L534.12,471.41 L534.78,471.75 L535.43,472.13 L536.05,472.54 L536.65,472.99 L537.22,473.46 L537.77,473.97 L538.29,474.5 L538.78,475.06 L539.24,475.65 L539.67,476.26 L540.06,476.89 L540.42,477.54 L540.75,478.22 L541.04,478.9 L541.29,479.6 L541.51,480.32 L541.68,481.04 L541.82,481.77 L541.92,482.51 L541.98,483.25 L542,484" fill="none" stroke="#c6c3ff" stroke-width="1.4" opacity="1"/>
+<path d="M528,484 L538,469" fill="none" stroke="#87c8d6" stroke-width="1.5" opacity="1"/><path d="M537.11,473.22 L538,469 L534.45,471.44" fill="none" stroke="#87c8d6" stroke-width="1.5" opacity="1"/>
+<text x="326" y="544" fill="#87c8d6" font-size="23" text-anchor="middle">Z₁Z₂Z₃Z₄</text>
+</g>
+</svg>
