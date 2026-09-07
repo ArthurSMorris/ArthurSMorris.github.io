@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-labelledby="title description">
 <title id="title">Euler winding</title>
 <desc id="description">The planar vector (cos 2θ, sin 2θ) turns twice around one circuit of the origin. A schematic texture relevant to Euler band crossings.</desc>
-<g fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Cambria Math, Georgia, serif">
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
 <circle cx="320" cy="320" r="83" stroke="#7186a4" stroke-width="0.9" fill="none" opacity="0.4"/>
 <circle cx="320" cy="320" r="151" stroke="#7186a4" stroke-width="0.9" fill="none" opacity="0.4"/>
 <circle cx="320" cy="320" r="221" stroke="#7186a4" stroke-width="0.9" fill="none" opacity="0.4"/>
@@ -223,6 +223,6 @@
 <path d="M418,467.22 L405,489.74" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/><path d="M405.92,483.34 L405,489.74 L410.08,485.74" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
 <path d="M471.98,400.24 L484.98,422.76" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/><path d="M479.9,418.76 L484.98,422.76 L484.06,416.36" fill="none" stroke="#c6c3ff" stroke-width="1.8" opacity="1"/>
 <circle cx="320" cy="320" r="5" stroke="#a8a5ff" stroke-width="0" fill="#a8a5ff" opacity="1"/>
-<text x="320" y="361" fill="#c6c3ff" font-size="22" text-anchor="middle">ν = 2</text>
+<g class="math-label" data-latex="\nu = 2" fill="#c6c3ff" stroke="none" transform="translate(296.57 350) scale(1 -1)"><path d="M1.39 0.09 Q1.12 0.09 1.12 0.37 L3 7.85 Q3.08 8.23 3.1 8.44 Q3.1 8.8 1.68 8.8 Q1.45 8.8 1.45 9.09 Q1.46 9.14 1.5 9.28 Q1.54 9.42 1.59 9.49 Q1.65 9.57 1.76 9.57 L4.73 9.81 Q4.99 9.81 4.99 9.53 L2.84 0.9 Q4.58 1.48 6.04 2.72 Q7.51 3.95 8.52 5.63 Q9.54 7.3 9.99 9.11 Q10.08 9.42 10.33 9.61 Q10.59 9.81 10.91 9.81 Q11.2 9.81 11.38 9.64 Q11.57 9.46 11.57 9.17 Q11.57 8.82 11.28 8.1 Q10.99 7.37 10.71 6.8 Q9.84 5.07 8.4 3.63 Q7.5 2.73 6.46 2.03 Q5.42 1.33 4.3 0.84 Q3.17 0.35 1.91 0.09 L1.39 0.09 Z M16.39 3.01 Q16.21 3.01 16.08 3.15 Q15.97 3.29 15.97 3.45 Q15.97 3.63 16.08 3.76 Q16.21 3.89 16.39 3.89 L30.2 3.89 Q30.36 3.89 30.48 3.76 Q30.6 3.63 30.6 3.45 Q30.6 3.29 30.48 3.15 Q30.36 3.01 30.2 3.01 L16.39 3.01 Z M16.39 7.28 Q16.21 7.28 16.08 7.41 Q15.97 7.54 15.97 7.72 Q15.97 7.89 16.08 8.02 Q16.21 8.16 16.39 8.16 L30.2 8.16 Q30.36 8.16 30.48 8.02 Q30.6 7.89 30.6 7.72 Q30.6 7.54 30.48 7.41 Q30.36 7.28 30.2 7.28 L16.39 7.28 Z M36.78 0.09 L36.78 0.68 Q36.78 0.73 36.83 0.79 L40.24 4.58 Q41.02 5.41 41.5 5.98 Q41.98 6.55 42.45 7.29 Q42.93 8.04 43.2 8.8 Q43.48 9.57 43.48 10.43 Q43.48 11.33 43.14 12.15 Q42.81 12.98 42.15 13.47 Q41.49 13.97 40.56 13.97 Q39.6 13.97 38.84 13.39 Q38.07 12.81 37.76 11.9 Q37.85 11.92 38 11.92 Q38.49 11.92 38.84 11.59 Q39.19 11.26 39.19 10.73 Q39.19 10.23 38.84 9.88 Q38.49 9.53 38 9.53 Q37.48 9.53 37.13 9.89 Q36.78 10.25 36.78 10.73 Q36.78 11.56 37.09 12.28 Q37.41 13.01 37.99 13.57 Q38.58 14.14 39.31 14.44 Q40.05 14.74 40.87 14.74 Q42.13 14.74 43.22 14.21 Q44.3 13.67 44.93 12.7 Q45.57 11.73 45.57 10.43 Q45.57 9.47 45.15 8.61 Q44.73 7.75 44.08 7.05 Q43.42 6.35 42.4 5.46 Q41.38 4.57 41.06 4.27 L38.57 1.87 L40.68 1.87 Q42.24 1.87 43.29 1.89 Q44.34 1.92 44.4 1.98 Q44.66 2.25 44.93 4.01 L45.57 4.01 L44.95 0.09 L36.78 0.09 Z"/></g>
 </g>
 </svg>

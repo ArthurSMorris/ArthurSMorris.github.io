@@ -27,8 +27,8 @@ not reproductions of paper figures or plots of measured data.
 ## Placement
 
 Each decorated page samples uniformly from all 16 motifs without replacement.
-The Graphics page has no background decorations. Positions are sampled
-continuously across the viewport, with a modest bias toward the
+The Graphics page has no background decorations. On desktop, positions are
+sampled continuously across the viewport, with a modest bias toward the
 margins and a check against excessive clipping or overlap. There are no fixed
 corner slots. Each drawing gets its own size, opacity and rotation: up to
 19 degrees in either direction, or 9 degrees for labelled circuit/Fano diagrams.
@@ -36,18 +36,40 @@ Diagrams are never mirrored, preserving their handedness. Background opacity
 is reduced by 12% from the initial version; the Graphics page shows each figure
 at its original contrast.
 
-Mobile screens show one graphic. Desktop screens show one or two, with a chance
-of three on large screens. Resizing preserves the chosen arrangement while
-scaling its coordinates. The drawings remain still between refreshes.
+Small screens (720px and below) and touch-only devices show one graphic centered
+behind the reading column, in the fixed background layer. This includes phones
+in landscape orientation. Its position follows the introductory text when that
+text is in view; otherwise it uses the center of the available viewport. The
+whole rotated canvas fits within the viewport below the header, with rotation
+limited to 6 degrees in either direction. Opacity stays between 16% and 22%,
+and the reading-column fade is removed, so fine lines remain visible behind the
+text. The graphic adds no space to the page and never changes the reading order.
 
-The actual `.page-inner` bounds determine a gentle opacity mask over the reading
-column. Graphics have empty alternative text, live inside an `aria-hidden`
-layer, cannot intercept clicks or scrolling, and are omitted from print.
+Desktop screens show one or two graphics, with a chance of three on large
+screens. Resizing preserves the selected motifs and restores their original
+random arrangement when returning to desktop. The drawings remain still between
+refreshes. The Graphics page continues to omit these decorations at every size.
+
+On desktop, the actual `.page-inner` bounds determine a gentle opacity mask over
+the reading column. On devices with a fine pointer and hover support, exposed backgrounds
+highlight on hover or keyboard focus and link to their exact `graphics.html#…`
+entry. Each link has a descriptive accessible name and a hover title. The full
+reading column, including its text, figures, gaps and footer, blocks background
+clicks; the header also stays above the graphics. Scrolling remains native.
+Touch-only devices keep the graphics decorative and hidden from assistive
+technology. Graphics are omitted from print and from the Graphics page itself.
 Only the chosen local SVGs load; no `fetch()` or external image service is used.
+
+All diagram labels are typeset from LaTeX notation in Computer Modern, including
+subscripted qubits and stabilizers, kets, Greek letters and coordinate labels.
+Glyphs are embedded as SVG paths, so no visitor font installation or font
+request is needed. The source notation is retained in each label's `data-latex`
+attribute. The catalogue includes the same updated drawings; its prose headings
+use embedded Latin Modern Roman outlines.
 
 At the website root, `script.js` controls motif choice, counts, sampling and
 angles. The final marked block in `styles.css` controls fading and presentation.
-The rest of the original script and stylesheet is preserved.
+Page content and the existing graphic selection probabilities are preserved.
 
 `background-catalogue.svg` shows all 16 graphics at full strength. The optional
 `tools/generate_backgrounds.py` regenerates the SVGs using Python, NumPy and

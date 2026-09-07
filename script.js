@@ -28,10 +28,29 @@ function addRandomMathDecorations() {
     "surface-code", "toric-code", "fano-plane", "quantum-circuit",
     "syndrome-circuit", "kagome-lattice", "band-contours", "temporal-network"
   ];
+  const titles = {
+    "brillouin-torus": "Brillouin torus",
+    "mobius-band": "Möbius band",
+    "hopf-fibres": "Linked Hopf fibres",
+    "trefoil-knot": "Trefoil knot",
+    "bloch-sphere": "Bloch sphere",
+    "dirac-cone": "Conical band crossing",
+    "euler-winding": "Winding-two texture",
+    "node-braid": "Band-node braid",
+    "surface-code": "Surface-code stabilizers",
+    "toric-code": "Toric-code lattice",
+    "fano-plane": "Fano plane",
+    "quantum-circuit": "GHZ preparation circuit",
+    "syndrome-circuit": "Stabilizer measurement",
+    "kagome-lattice": "Kagome lattice",
+    "band-contours": "Band-energy contours",
+    "temporal-network": "Temporal network"
+  };
   const random = function (min, max) { return min + Math.random() * (max - min); };
   const clamp = function (value, min, max) { return Math.max(min, Math.min(max, value)); };
   const pick = function (list) { return list[Math.floor(Math.random() * list.length)]; };
-  const mobile = window.innerWidth <= 720;
+  const compactLayout = window.matchMedia("(max-width: 720px), (hover: none) and (pointer: coarse)");
+  const mobile = compactLayout.matches;
   const spacious = window.innerWidth >= 1500 && window.innerHeight >= 820;
   const count = mobile ? 1 : (spacious && Math.random() < 0.35 ? 3 : (Math.random() < 0.18 ? 1 : 2));
   // Uniform sampling without replacement, identical on every decorated page.
@@ -73,7 +92,7 @@ function addRandomMathDecorations() {
     const maxAngle = name.includes("circuit") || name === "fano-plane" ? 9 : 19;
     best.angle = random(-maxAngle, maxAngle);
     best.opacity = 0.88 * random(0.25, 0.36) * (["band-contours", "euler-winding", "trefoil-knot"].includes(name) ? 0.8 : 1);
-    const item = document.createElement("div");
+    const item = document.createElement("a");
     item.className = "math-decoration math-motif--" + name;
     item.style.setProperty("--math-rotation", best.angle.toFixed(2) + "deg");
     item.style.setProperty("--math-opacity", best.opacity.toFixed(3));
@@ -87,15 +106,73 @@ function addRandomMathDecorations() {
     image.src = "assets/backgrounds/" + name + ".svg";
     item.appendChild(image);
     layer.appendChild(item);
+    best.name = name;
     best.element = item;
     placed.push(best);
   });
-  document.body.insertBefore(layer, document.body.firstChild);
+  // Put these optional links after the page's normal keyboard navigation.
+  document.body.appendChild(layer);
+
+  const hoverInput = window.matchMedia("(hover: hover) and (pointer: fine)");
+  function updateInteractivity() {
+    const enabled = hoverInput.matches;
+    layer.classList.toggle("math-decoration-layer--interactive", enabled);
+    document.body.classList.toggle("has-math-links", enabled);
+    if (enabled) layer.removeAttribute("aria-hidden");
+    else layer.setAttribute("aria-hidden", "true");
+    placed.forEach(function (entry) {
+      const link = entry.element;
+      if (enabled) {
+        link.setAttribute("href", "graphics.html#" + entry.name);
+        link.setAttribute("aria-label", "Read about " + titles[entry.name]);
+        link.setAttribute("title", titles[entry.name] + " — read the explanation");
+        link.removeAttribute("tabindex");
+      } else {
+        if (document.activeElement === link) link.blur();
+        link.removeAttribute("href");
+        link.removeAttribute("aria-label");
+        link.removeAttribute("title");
+        link.setAttribute("tabindex", "-1");
+      }
+    });
+  }
+  updateInteractivity();
+  hoverInput.addEventListener("change", updateInteractivity);
 
   function layout() {
     const w = window.innerWidth;
     const h = window.innerHeight;
-    const narrow = w <= 720;
+    const narrow = compactLayout.matches;
+    const column = document.querySelector(".page-inner");
+
+    if (narrow) {
+      // Keep the drawing in the fixed background, centered behind the reading
+      // column rather than in the off-screen margins. Fit its entire rotated
+      // canvas below the header and inside the viewport.
+      const box = column ? column.getBoundingClientRect() : { left: 16, right: w - 16 };
+      const header = document.querySelector(".site-header");
+      const headerBottom = header ? header.getBoundingClientRect().bottom : 0;
+      const top = clamp(headerBottom + 16, 16, Math.max(16, h - 32));
+      const bottom = h - 16;
+      const availableWidth = Math.min(box.right, w - 16) - Math.max(box.left, 16);
+      const size = Math.max(0, Math.min(availableWidth, bottom - top, 520)) * 0.9;
+      const halfFootprint = size * (Math.cos(Math.PI / 30) + Math.sin(Math.PI / 30)) / 2;
+      const x = clamp((box.left + box.right) / 2, 16 + halfFootprint, w - 16 - halfFootprint);
+      const intro = column && column.querySelector(".lede");
+      const introBox = intro && intro.getBoundingClientRect();
+      const desiredY = introBox && introBox.bottom > top && introBox.top < bottom
+        ? (introBox.top + introBox.bottom) / 2 : (top + bottom) / 2;
+      const y = clamp(desiredY, top + halfFootprint, bottom - halfFootprint);
+      layer.classList.remove("math-decoration-layer--reading");
+      placed.forEach(function (entry) {
+        entry.element.style.width = size.toFixed(2) + "px";
+        entry.element.style.left = x.toFixed(2) + "px";
+        entry.element.style.top = y.toFixed(2) + "px";
+      });
+      return;
+    }
+
+    // Restore the same randomized arrangement when returning to a wider screen.
     placed.forEach(function (entry) {
       const size = Math.min(w * (narrow ? 0.91 : 0.43), h * 0.8, 610) * entry.ratio;
       entry.element.style.width = size.toFixed(2) + "px";
@@ -105,7 +182,6 @@ function addRandomMathDecorations() {
 
     // Follow the actual reading column; opacity stays calm even when an image
     // happens to land behind text. The standalone preview has no reading column.
-    const column = document.querySelector(".page-inner");
     if (column) {
       const box = column.getBoundingClientRect();
       const middle = (box.left + box.right) / 2;
@@ -118,8 +194,11 @@ function addRandomMathDecorations() {
   }
   layout();
   let frame = 0;
-  window.addEventListener("resize", function () {
+  function scheduleLayout() {
     if (frame) window.cancelAnimationFrame(frame);
     frame = window.requestAnimationFrame(function () { frame = 0; layout(); });
-  }, { passive: true });
+  }
+  window.addEventListener("resize", scheduleLayout, { passive: true });
+  compactLayout.addEventListener("change", scheduleLayout);
+  if (document.fonts) document.fonts.ready.then(scheduleLayout);
 }

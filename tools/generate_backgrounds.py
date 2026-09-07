@@ -7,7 +7,11 @@ from pathlib import Path
 import html
 import json
 import math
+from functools import lru_cache
 import numpy as np
+from matplotlib.font_manager import FontProperties
+from matplotlib.path import Path as GlyphPath
+from matplotlib.textpath import TextPath, TextToPath
 
 OUT = Path(__file__).resolve().parents[1] / "assets" / "backgrounds"
 TAU = 2 * math.pi
@@ -33,8 +37,32 @@ def circle(x, y, r, color=INK, width=1.4, fill="none", opacity=1):
     return f'<circle {attrs(cx=n(x), cy=n(y), r=n(r), stroke=color, stroke_width=width, fill=fill, opacity=opacity)}/>'
 
 
+@lru_cache(maxsize=128)
+def math_glyphs(latex, size):
+    """Typeset LaTeX notation with Computer Modern and embed its glyph outlines.
+
+    Matplotlib's mathtext renderer supplies the font and mathematical layout;
+    visitors need neither a font download nor a TeX installation.
+    """
+    properties = FontProperties(size=size, math_fontfamily="cm")
+    expression = "$" + latex + "$"
+    width, _, _ = TextToPath().get_text_width_height_descent(expression, properties, ismath=True)
+    glyphs = TextPath((0, 0), expression, prop=properties, usetex=False)
+    commands = []
+    command_names = {GlyphPath.MOVETO: "M", GlyphPath.LINETO: "L", GlyphPath.CURVE3: "Q", GlyphPath.CURVE4: "C"}
+    for points, code in glyphs.iter_segments(curves=True, simplify=False):
+        if code == GlyphPath.CLOSEPOLY:
+            commands.append("Z")
+        else:
+            commands.append(command_names[code] + " ".join(n(value) for value in points))
+    return float(width), " ".join(commands)
+
+
 def label(x, y, text, color=INK, size=21, anchor="middle"):
-    return f'<text {attrs(x=n(x), y=n(y), fill=color, font_size=size, text_anchor=anchor)}>{html.escape(text)}</text>'
+    width, outline = math_glyphs(text, size)
+    offset = {"start": 0, "middle": .5, "end": 1}[anchor] * width
+    transform = f"translate({n(x-offset)} {n(y)}) scale(1 -1)"
+    return f'<g class="math-label" {attrs(data_latex=text, fill=color, stroke="none", transform=transform)}><path d="{outline}"/></g>'
 
 
 def arrow(a, b, color=INK, width=1.6, head=7, opacity=1):
@@ -50,7 +78,7 @@ def save(name, title, description, elements):
         '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-labelledby="title description">',
         f'<title id="title">{html.escape(title)}</title>',
         f'<desc id="description">{html.escape(description)}</desc>',
-        '<g fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Cambria Math, Georgia, serif">',
+        '<g fill="none" stroke-linecap="round" stroke-linejoin="round">',
         *elements, '</g>', '</svg>'
     ])
     (OUT / (name+'.svg')).write_text(content+'\n',encoding='utf-8')
@@ -185,8 +213,8 @@ def bloch():
         q=cam.project([np.array(vec)*-1.17,np.array(vec)*1.22])
         els.extend([arrow(q[0,:2],q[1,:2],MUTED,1.2,7,.85),label(q[1,0]+10,q[1,1]+4,name,MUTED,18)])
     psi=np.array([.2,.75,.63]); psi/=np.linalg.norm(psi); endpoint=cam.project([psi])[0]
-    els.extend([arrow([320,314],endpoint[:2],INK,2.8,11),circle(endpoint[0],endpoint[1],5,INK,0,INK),label(endpoint[0]+22,endpoint[1]-10,'|ψ⟩',INK,25,'start')])
-    for v,name,shift in [([0,0,1],'|0⟩',-15),([0,0,-1],'|1⟩',31)]:
+    els.extend([arrow([320,314],endpoint[:2],INK,2.8,11),circle(endpoint[0],endpoint[1],5,INK,0,INK),label(endpoint[0]+22,endpoint[1]-10,r'|\psi\rangle',INK,25,'start')])
+    for v,name,shift in [([0,0,1],r'|0\rangle',-15),([0,0,-1],r'|1\rangle',31)]:
         q=cam.project([v])[0]; els.extend([circle(q[0],q[1],3.5,INK,0,INK),label(q[0]-18,q[1]+shift,name)])
     save('bloch-sphere','Bloch sphere','A unit sphere, coordinate axes, computational-basis poles and a normalized pure-qubit state vector. Back-facing curves are attenuated.',els)
 
@@ -212,7 +240,7 @@ def winding():
     for phi in np.linspace(0,TAU,12,endpoint=False):
         p=np.array([320+183*math.cos(phi),320-183*math.sin(phi)]); v=np.array([math.cos(2*phi),-math.sin(2*phi)])*13
         els.append(arrow(p-v,p+v,INK,1.8,6))
-    els.extend([circle(320,320,5,VIOLET,0,VIOLET),label(320,361,'ν = 2',INK,22)])
+    els.extend([circle(320,320,5,VIOLET,0,VIOLET),label(320,350,r'\nu = 2',INK,22)])
     save('euler-winding','Euler winding','The planar vector (cos 2θ, sin 2θ) turns twice around one circuit of the origin. A schematic texture relevant to Euler band crossings.',els)
 
 
@@ -271,7 +299,7 @@ def fano():
     a=np.array([320.,94.]); b=np.array([111.,456.]); c=np.array([529.,456.]); d=(a+b)/2; e=(a+c)/2; f=(b+c)/2; g=(a+b+c)/3
     els=[path([a,b,c],INK,1.8,close=True),circle(*g,np.linalg.norm(f-g),CYAN,2.3,fill='#223344')]
     for p,q in [(a,f),(b,e),(c,d)]: els.append(path([p,q],VIOLET,1.35))
-    for p,text,offset in [(a,'001',(0,-20)),(b,'010',(-27,23)),(c,'100',(27,23)),(d,'011',(-35,-8)),(e,'101',(35,-8)),(f,'110',(0,33)),(g,'111',(25,-15))]:
+    for p,text,offset in [(a,'001',(0,-20)),(b,'010',(-27,23)),(c,'100',(27,23)),(d,'011',(-35,-8)),(e,'101',(35,-8)),(f,'110',(0,33)),(g,'111',(35,5))]:
         els.extend([circle(*p,6.5,INK,1.8,BG),circle(*p,2.3,INK,0,INK),label(p[0]+offset[0],p[1]+offset[1],text,CYAN if text in ['011','101','110'] else INK,18)])
     save('fano-plane','Fano plane','The seven points and seven three-point lines of PG(2,2). Nonzero binary vectors label points; every line has vector sum zero. Related to the Hamming and Steane code constructions.',els)
 
@@ -282,7 +310,7 @@ def cnot(els,x,y0,y1,color=CYAN):
 
 def circuit():
     els=[]; ys=[176,270,364,458]
-    for y in ys: els.extend([path([[113,y],[549,y]],MUTED,1.6),label(82,y+7,'|0⟩',INK,25)])
+    for y in ys: els.extend([path([[113,y],[549,y]],MUTED,1.6),label(82,y+7,r'|0\rangle',INK,25)])
     x,y=174,ys[0]
     els.extend([path([[x-23,y-23],[x+23,y-23],[x+23,y+23],[x-23,y+23]],INK,1.8,close=True,fill='#273249'),label(x,y+8,'H',INK,26)])
     for i,x in enumerate([277,380,483]): cnot(els,x,ys[i],ys[i+1])
@@ -291,14 +319,14 @@ def circuit():
 
 def syndrome():
     els=[]; ys=[132,211,290,369,478]
-    for i,y in enumerate(ys): els.extend([path([[105,y],[550,y]],MUTED,1.5),label(81,y+6,'|0⟩' if i==4 else f'q{i+1}',INK,21)])
+    for i,y in enumerate(ys): els.extend([path([[105,y],[550,y]],MUTED,1.5),label(81,y+6,r'|0\rangle' if i==4 else f'q_{{{i+1}}}',INK,21)])
     for i,x in enumerate([175,265,355,445]): cnot(els,x,ys[i],ys[4])
     x,y=528,ys[4]
     els.append(path([[x-23,y-23],[x+23,y-23],[x+23,y+23],[x-23,y+23]],INK,1.7,close=True,fill=BG))
     t=np.linspace(math.pi,TAU,60)
     els.append(path(np.column_stack([x+14*np.cos(t),y+6+14*np.sin(t)]),INK,1.4))
     els.append(arrow([x,y+6],[x+10,y-9],CYAN,1.5,4))
-    els.append(label(326,544,'Z₁Z₂Z₃Z₄',CYAN,23))
+    els.append(label(326,544,r'Z_1 Z_2 Z_3 Z_4',CYAN,23))
     save('syndrome-circuit','Stabilizer measurement','Four data-controlled CNOTs accumulate their computational-basis parity in a zero-state ancilla; measuring the ancilla in Z measures the four-body Z stabilizer.',els)
 
 
@@ -350,7 +378,7 @@ def temporal():
         for a,b in extra[frame]: els.append(path([layer[a],layer[b]],CYAN if frame==1 else INK,1.8))
         for node,p in enumerate(layer):
             col=CYAN if node==7 else INK; els.append(circle(*p,5.3,col,1.5,BG))
-        els.append(label(71+frame*40,458-frame*133,['t','t + Δt','t + 2Δt'][frame],MUTED,19,'end'))
+        els.append(label(71+frame*40,458-frame*133,['t',r't + \Delta t',r't + 2\Delta t'][frame],MUTED,19,'end'))
     save('temporal-network','Temporal network','Three schematic snapshots of the same eight-node network, with changing edges and dotted inter-layer correspondences. No empirical network is implied.',els)
 
 
