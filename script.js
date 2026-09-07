@@ -139,10 +139,18 @@ function addRandomMathDecorations() {
   updateInteractivity();
   hoverInput.addEventListener("change", updateInteractivity);
 
+  let mobileLayoutWidth = null;
   function layout() {
     const w = window.innerWidth;
     const h = window.innerHeight;
     const narrow = compactLayout.matches;
+
+    // Mobile browsers fire resize while their address bar opens or closes on
+    // scroll. Keep the existing pixel coordinates and size for height-only
+    // changes, including late font loading; reflow only for a new screen width
+    // or after switching between mobile and desktop layouts.
+    if (narrow && mobileLayoutWidth === w) return;
+    if (!narrow) mobileLayoutWidth = null;
     const column = document.querySelector(".page-inner");
 
     if (narrow) {
@@ -169,6 +177,7 @@ function addRandomMathDecorations() {
         entry.element.style.left = x.toFixed(2) + "px";
         entry.element.style.top = y.toFixed(2) + "px";
       });
+      mobileLayoutWidth = w;
       return;
     }
 

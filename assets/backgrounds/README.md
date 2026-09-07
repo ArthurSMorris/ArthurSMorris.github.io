@@ -38,9 +38,12 @@ at its original contrast.
 
 Small screens (720px and below) and touch-only devices show one graphic centered
 behind the reading column, in the fixed background layer. This includes phones
-in landscape orientation. Its position follows the introductory text when that
-text is in view; otherwise it uses the center of the available viewport. The
-whole rotated canvas fits within the viewport below the header, with rotation
+in landscape orientation. Initial placement uses the introductory text when
+that text is in view; otherwise it uses the center of the available viewport.
+Its pixel coordinates and size then stay fixed while scrolling, including when
+the browser address bar changes height or fonts finish loading. Placement is
+recomputed only when the screen width or mobile/desktop layout mode changes.
+The initial rotated canvas fits within the viewport below the header, with rotation
 limited to 6 degrees in either direction. Opacity stays between 16% and 22%,
 and the reading-column fade is removed, so fine lines remain visible behind the
 text. The graphic adds no space to the page and never changes the reading order.

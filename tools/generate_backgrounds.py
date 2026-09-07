@@ -150,7 +150,11 @@ def broken_curves(curves,colors,width=2.6,gap=8):
                 valid=np.abs(denom)>1e-8; den=np.where(valid,denom,1)
                 s=(origin[:,0]*edges[:,1]-origin[:,1]*edges[:,0])/den
                 t=(origin[:,0]*delta[1]-origin[:,1]*delta[0])/den
-                for l in np.where(valid & (s>0) & (s<1) & (t>0) & (t<1))[0]:
+                # Crossings can land exactly on sampled vertices (notably the
+                # middle braid exchange). Include segment endpoints as well;
+                # repeated detections simply merge into the same gap mask.
+                tolerance=1e-9
+                for l in np.where(valid & (s>=-tolerance) & (s<=1+tolerance) & (t>=-tolerance) & (t<=1+tolerance))[0]:
                     if i==j and (abs(k-l)<4 or abs(k-l)>len(a)-5): continue
                     za=a0[2]+s[l]*(a1[2]-a0[2]); zb=b[l,2]+t[l]*(b[l+1,2]-b[l,2])
                     target,seg=(i,k) if za<zb else (j,l); q=curves[target]
@@ -194,6 +198,22 @@ def trefoil():
     for angle,col in [(math.pi/3,INK),(math.pi,CYAN),(5*math.pi/3,VIOLET)]:
         curve(scene,cam,p+.117*(math.cos(angle)*normal+math.sin(angle)*binormal),col,.8,bias=.002)
     save('trefoil-knot','Trefoil knot','A smooth tubular embedding of the (2,3) torus knot, with depth-sorted faces making its three crossings legible.',sorted_scene(scene))
+
+
+def favicon():
+    """A simplified trefoil diagram with thick strokes for small browser icons."""
+    cam=Camera(az=-.1,el=1.16,scale=8.8,center=(32,32))
+    t=np.linspace(0,TAU,601)
+    points=np.column_stack([np.sin(t)+2*np.sin(2*t),np.cos(t)-2*np.cos(2*t),-np.sin(3*t)])
+    elements=broken_curves([cam.project(points)],[INK],5.2,10)
+    content='\n'.join([
+        '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="title">',
+        '<title id="title">Arthur Morris — trefoil knot</title>',
+        f'<rect width="64" height="64" rx="14" fill="{BG}"/>',
+        '<g fill="none" stroke-linecap="round" stroke-linejoin="round">',
+        *elements, '</g>', '</svg>'
+    ])
+    (OUT.parents[1]/'favicon.svg').write_text(content+'\n',encoding='utf-8')
 
 
 def bloch():
@@ -387,3 +407,4 @@ if __name__ == '__main__':
         generate()
         print(generate.__name__)
     (OUT/'manifest.json').write_text(json.dumps(MANIFEST,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    favicon()

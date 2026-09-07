@@ -16,8 +16,10 @@ The site selects uniformly from all 16 original SVG diagrams without repeating
 a graphic within a page load. Positions, sizes and subtle rotations vary on each
 refresh. Small screens (720px and below) and touch-only devices keep one graphic
 centered behind the reading area, including on phones in landscape orientation.
-The drawing stays entirely within the viewport, with clearer contrast and limited
-rotation. It remains behind the text and adds no extra space to the page.
+The drawing is fitted within the viewport, with clearer contrast and limited
+rotation. Its position and size stay fixed while scrolling, even when the mobile
+browser address bar expands or collapses. A screen-width or layout-mode change
+recalculates placement. It remains behind the text and adds no extra page space.
 Desktop screens keep the randomized placement and reduced opacity, showing one
 or two graphics, with a chance of three on large screens. The backgrounds stay
 still and fade over the desktop reading column. On desktop hover, an
