@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   addRandomMathDecorations();
+  initPhotoLightbox();
 });
 
 function addRandomMathDecorations() {
@@ -210,4 +211,363 @@ function addRandomMathDecorations() {
   window.addEventListener("resize", scheduleLayout, { passive: true });
   compactLayout.addEventListener("change", scheduleLayout);
   if (document.fonts) document.fonts.ready.then(scheduleLayout);
+}
+
+
+function initPhotoLightbox() {
+  const galleryImages = Array.from(document.querySelectorAll(".misc-photo img"));
+  const contactImages = Array.from(document.querySelectorAll(".copenhagen-figure img"));
+  const images = galleryImages.length ? galleryImages : contactImages;
+  if (!images.length) return;
+
+  const isGallery = galleryImages.length > 1;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let currentIndex = 0;
+  let lastTrigger = null;
+  let navigationToken = 0;
+  let savedBodyPaddingRight = "";
+  let savedBodyOverflow = "";
+
+  const overlay = document.createElement("div");
+  overlay.className = "photo-lightbox";
+  overlay.setAttribute("role", "dialog");
+  overlay.setAttribute("aria-modal", "true");
+  overlay.setAttribute("aria-label", "Enlarged photograph");
+  overlay.setAttribute("aria-hidden", "true");
+  overlay.hidden = true;
+
+  const figure = document.createElement("figure");
+  figure.className = "photo-lightbox-figure";
+
+  const enlargedImage = document.createElement("img");
+  enlargedImage.className = "photo-lightbox-image";
+  enlargedImage.alt = "";
+  enlargedImage.decoding = "async";
+  enlargedImage.draggable = false;
+
+  const caption = document.createElement("figcaption");
+  caption.className = "photo-lightbox-caption";
+
+  const closeButton = makeLightboxButton("photo-lightbox-close", "Close enlarged photograph", "×");
+  const previousButton = makeLightboxButton("photo-lightbox-arrow photo-lightbox-arrow--previous", "Previous photograph", "‹");
+  const nextButton = makeLightboxButton("photo-lightbox-arrow photo-lightbox-arrow--next", "Next photograph", "›");
+
+  figure.appendChild(enlargedImage);
+  figure.appendChild(caption);
+  overlay.appendChild(figure);
+  overlay.appendChild(closeButton);
+  if (isGallery) {
+    overlay.appendChild(previousButton);
+    overlay.appendChild(nextButton);
+  }
+  document.body.appendChild(overlay);
+
+  images.forEach(function (image, index) {
+    image.classList.add("photo-lightbox-trigger");
+    image.setAttribute("tabindex", "0");
+    image.setAttribute("role", "button");
+    image.setAttribute("aria-label", image.alt ? "Enlarge photograph: " + image.alt : "Enlarge photograph");
+
+    image.addEventListener("click", function () { openLightbox(index, image); });
+    image.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openLightbox(index, image);
+      }
+    });
+  });
+
+  closeButton.addEventListener("click", closeLightbox);
+  if (isGallery) {
+    previousButton.addEventListener("click", function () { showAdjacent(-1); });
+    nextButton.addEventListener("click", function () { showAdjacent(1); });
+  }
+
+  overlay.addEventListener("click", function (event) {
+    if (event.target === overlay) closeLightbox();
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (!overlay.classList.contains("photo-lightbox--open")) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeLightbox();
+    } else if (isGallery && event.key === "ArrowLeft") {
+      event.preventDefault();
+      showAdjacent(-1);
+    } else if (isGallery && event.key === "ArrowRight") {
+      event.preventDefault();
+      showAdjacent(1);
+    }
+  });
+
+  function makeLightboxButton(className, label, symbol) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = className;
+    button.setAttribute("aria-label", label);
+    button.textContent = symbol;
+    return button;
+  }
+
+  function getSourceRect(image) {
+    const crop = image.closest(".misc-cycling-image");
+    return (crop || image).getBoundingClientRect();
+  }
+
+  function getCaption(image) {
+    const sourceCaption = image.closest("figure") && image.closest("figure").querySelector("figcaption");
+    return sourceCaption ? sourceCaption.innerHTML : "";
+  }
+
+  function setLightboxContent(index) {
+    const source = images[index];
+    enlargedImage.src = source.currentSrc || source.src;
+    enlargedImage.alt = source.alt || "";
+    caption.innerHTML = getCaption(source);
+    caption.hidden = !caption.textContent.trim();
+  }
+
+  function openLightbox(index, trigger) {
+    currentIndex = index;
+    lastTrigger = trigger;
+    navigationToken += 1;
+    // The enlarged image stays hidden after a close so it can never leak a
+    // full-size frame while the overlay is being torn down. Only reveal it
+    // when a new opening actually begins.
+    enlargedImage.style.visibility = "";
+    overlay.hidden = false;
+    overlay.classList.remove("photo-lightbox--closing");
+    // Clear any previous image animation before laying out the next opening.
+    enlargedImage.getAnimations().forEach(function (animation) { animation.cancel(); });
+    setLightboxContent(index);
+
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    savedBodyPaddingRight = document.body.style.paddingRight;
+    savedBodyOverflow = document.body.style.overflow;
+    if (scrollbarWidth > 0) document.body.style.paddingRight = scrollbarWidth + "px";
+    document.body.style.overflow = "hidden";
+
+    overlay.setAttribute("aria-hidden", "false");
+    overlay.classList.add("photo-lightbox--open");
+
+    const sourceRect = getSourceRect(trigger);
+    requestAnimationFrame(function () {
+      const targetRect = enlargedImage.getBoundingClientRect();
+      if (!reducedMotion.matches && targetRect.width && targetRect.height) {
+        const sourceCenterX = sourceRect.left + sourceRect.width / 2;
+        const sourceCenterY = sourceRect.top + sourceRect.height / 2;
+        const targetCenterX = targetRect.left + targetRect.width / 2;
+        const targetCenterY = targetRect.top + targetRect.height / 2;
+        enlargedImage.animate([
+          {
+            transform: "translate(" + (sourceCenterX - targetCenterX) + "px, " + (sourceCenterY - targetCenterY) + "px) scale(" + (sourceRect.width / targetRect.width) + ", " + (sourceRect.height / targetRect.height) + ")",
+            opacity: 0.72
+          },
+          { transform: "translate(0, 0) scale(1, 1)", opacity: 1 }
+        ], {
+          duration: 360,
+          easing: "cubic-bezier(.2,.75,.25,1)"
+        });
+      }
+      closeButton.focus({ preventScroll: true });
+    });
+
+    preloadAdjacent();
+  }
+
+  function closeLightbox() {
+    if (!overlay.classList.contains("photo-lightbox--open")) return;
+    navigationToken += 1;
+
+    const source = images[currentIndex] || lastTrigger;
+    enlargedImage.getAnimations().forEach(function (animation) { animation.cancel(); });
+    caption.getAnimations().forEach(function (animation) { animation.cancel(); });
+
+    const startRect = enlargedImage.getBoundingClientRect();
+    const sourceVisibility = source ? source.style.visibility : "";
+    let returningImage = null;
+
+    // The actual lightbox image is hidden before *anything* about the overlay
+    // or page layout changes. It remains hidden after closing and is only
+    // revealed by openLightbox(), so it cannot flash at full size on teardown.
+    enlargedImage.style.visibility = "hidden";
+    if (source) source.style.visibility = "hidden";
+
+    // Create a completely independent fixed-position copy for the return trip.
+    // Its geometry is animated directly (left/top/width/height), rather than by
+    // a transform whose fill state can snap back for a frame when it finishes.
+    if (!reducedMotion.matches && source && startRect.width && startRect.height) {
+      const computedImageStyle = window.getComputedStyle(enlargedImage);
+      returningImage = enlargedImage.cloneNode(false);
+      returningImage.removeAttribute("id");
+      returningImage.removeAttribute("class");
+      returningImage.removeAttribute("tabindex");
+      returningImage.setAttribute("aria-hidden", "true");
+      returningImage.alt = "";
+      returningImage.style.position = "fixed";
+      returningImage.style.left = startRect.left + "px";
+      returningImage.style.top = startRect.top + "px";
+      returningImage.style.width = startRect.width + "px";
+      returningImage.style.height = startRect.height + "px";
+      returningImage.style.maxWidth = "none";
+      returningImage.style.maxHeight = "none";
+      returningImage.style.margin = "0";
+      returningImage.style.padding = "0";
+      returningImage.style.border = computedImageStyle.border;
+      returningImage.style.borderRadius = computedImageStyle.borderRadius;
+      returningImage.style.boxShadow = computedImageStyle.boxShadow;
+      returningImage.style.objectFit = "fill";
+      returningImage.style.pointerEvents = "none";
+      returningImage.style.zIndex = "1201";
+      returningImage.style.opacity = "1";
+      // cloneNode() copies the inline visibility:hidden set on enlargedImage
+      // above. Make only the independent flying copy visible; the real
+      // lightbox image stays hidden throughout teardown, preventing flashes.
+      returningImage.style.visibility = "visible";
+      document.body.appendChild(returningImage);
+    }
+
+    // Restore the normal page layout before measuring the destination. Because
+    // the flying copy is position:fixed, scrollbar restoration cannot move it.
+    document.body.style.overflow = savedBodyOverflow;
+    document.body.style.paddingRight = savedBodyPaddingRight;
+    const sourceRect = source ? getSourceRect(source) : null;
+
+    overlay.classList.add("photo-lightbox--closing");
+    overlay.classList.remove("photo-lightbox--open");
+    overlay.setAttribute("aria-hidden", "true");
+
+    function finishClose() {
+      // Remove the lightbox from rendering altogether while its real enlarged
+      // image is still hidden. This is stronger than relying on opacity or a
+      // delayed visibility transition and prevents any full-size teardown frame.
+      overlay.hidden = true;
+      overlay.classList.remove("photo-lightbox--closing");
+
+      if (source) source.style.visibility = sourceVisibility;
+      if (lastTrigger) lastTrigger.focus({ preventScroll: true });
+
+      if (returningImage) {
+        // Keep the landed copy for one paint so the now-visible thumbnail is
+        // definitely underneath it before the copy disappears. There is no
+        // blank frame and no handoff back to the full-size lightbox image.
+        requestAnimationFrame(function () {
+          returningImage.remove();
+        });
+      }
+    }
+
+    if (returningImage && sourceRect && sourceRect.width && sourceRect.height) {
+      const endLeft = sourceRect.left;
+      const endTop = sourceRect.top;
+      const endWidth = sourceRect.width;
+      const endHeight = sourceRect.height;
+
+      const closingAnimation = returningImage.animate([
+        {
+          left: startRect.left + "px",
+          top: startRect.top + "px",
+          width: startRect.width + "px",
+          height: startRect.height + "px",
+          opacity: 1
+        },
+        {
+          left: endLeft + "px",
+          top: endTop + "px",
+          width: endWidth + "px",
+          height: endHeight + "px",
+          opacity: 1
+        }
+      ], {
+        duration: 360,
+        easing: "cubic-bezier(.2,.75,.25,1)",
+        fill: "forwards"
+      });
+
+      function landAndFinish() {
+        // Freeze the final geometry as ordinary inline style *before* cancelling
+        // the Web Animation. Therefore the element cannot snap back to full size
+        // even for a single compositor frame when the animation object ends.
+        returningImage.style.left = endLeft + "px";
+        returningImage.style.top = endTop + "px";
+        returningImage.style.width = endWidth + "px";
+        returningImage.style.height = endHeight + "px";
+        returningImage.style.opacity = "1";
+        closingAnimation.cancel();
+        finishClose();
+      }
+
+      closingAnimation.finished.then(landAndFinish).catch(function () {
+        // If the animation is cancelled externally, still close without ever
+        // revealing the hidden full-size image.
+        if (returningImage && returningImage.isConnected) {
+          returningImage.style.left = endLeft + "px";
+          returningImage.style.top = endTop + "px";
+          returningImage.style.width = endWidth + "px";
+          returningImage.style.height = endHeight + "px";
+        }
+        finishClose();
+      });
+    } else {
+      finishClose();
+    }
+  }
+
+  function showAdjacent(direction) {
+    if (!isGallery) return;
+    const nextIndex = (currentIndex + direction + images.length) % images.length;
+    const token = ++navigationToken;
+    const source = images[nextIndex];
+    const nextSource = source.currentSrc || source.src;
+    const loader = new Image();
+    loader.src = nextSource;
+
+    const ready = typeof loader.decode === "function"
+      ? loader.decode().catch(function () {})
+      : new Promise(function (resolve) {
+          if (loader.complete) resolve();
+          else {
+            loader.addEventListener("load", resolve, { once: true });
+            loader.addEventListener("error", resolve, { once: true });
+          }
+        });
+
+    ready.then(function () {
+      if (token !== navigationToken || !overlay.classList.contains("photo-lightbox--open")) return;
+      const outgoing = reducedMotion.matches ? null : enlargedImage.animate([
+        { opacity: 1, transform: "translateX(0)" },
+        { opacity: 0, transform: "translateX(" + (-direction * 26) + "px)" }
+      ], { duration: 130, easing: "ease-in" });
+
+      const swap = function () {
+        if (token !== navigationToken || !overlay.classList.contains("photo-lightbox--open")) return;
+        currentIndex = nextIndex;
+        setLightboxContent(currentIndex);
+        if (!reducedMotion.matches) {
+          enlargedImage.animate([
+            { opacity: 0, transform: "translateX(" + (direction * 26) + "px)" },
+            { opacity: 1, transform: "translateX(0)" }
+          ], { duration: 190, easing: "ease-out" });
+          caption.animate([
+            { opacity: 0 },
+            { opacity: 1 }
+          ], { duration: 190, easing: "ease-out" });
+        }
+        preloadAdjacent();
+      };
+
+      if (outgoing) outgoing.finished.then(swap).catch(swap);
+      else swap();
+    });
+  }
+
+  function preloadAdjacent() {
+    if (!isGallery) return;
+    [-1, 1].forEach(function (offset) {
+      const index = (currentIndex + offset + images.length) % images.length;
+      const preload = new Image();
+      preload.src = images[index].currentSrc || images[index].src;
+    });
+  }
 }
