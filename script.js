@@ -336,6 +336,18 @@ function initPhotoLightbox() {
     // full-size frame while the overlay is being torn down. Only reveal it
     // when a new opening actually begins.
     enlargedImage.style.visibility = "";
+
+    // The caption and controls are held explicitly hidden throughout closing.
+    // Reset those inline guards while the overlay is still hidden, so there is
+    // no rendered frame in which they can flash back on between closes/opens.
+    [caption, closeButton, previousButton, nextButton].forEach(function (element) {
+      if (!element || !element.isConnected) return;
+      element.style.opacity = "";
+      element.style.visibility = "";
+      element.style.pointerEvents = "";
+      element.style.transition = "";
+    });
+
     overlay.hidden = false;
     overlay.classList.remove("photo-lightbox--closing");
     // Clear any previous image animation before laying out the next opening.
@@ -387,6 +399,20 @@ function initPhotoLightbox() {
     const startRect = enlargedImage.getBoundingClientRect();
     const sourceVisibility = source ? source.style.visibility : "";
     let returningImage = null;
+
+    // Freeze the caption and all lightbox controls in a hidden state for the
+    // *entire* teardown. Relying only on the closing CSS class lets their base
+    // styles become eligible to render again when that class is removed, which
+    // can produce a one-frame flash. These inline guards are not cleared until
+    // the next openLightbox() call, while the overlay is still hidden.
+    [caption, closeButton, previousButton, nextButton].forEach(function (element) {
+      if (!element || !element.isConnected) return;
+      element.getAnimations().forEach(function (animation) { animation.cancel(); });
+      element.style.transition = "none";
+      element.style.opacity = "0";
+      element.style.visibility = "hidden";
+      element.style.pointerEvents = "none";
+    });
 
     // The actual lightbox image is hidden before *anything* about the overlay
     // or page layout changes. It remains hidden after closing and is only
